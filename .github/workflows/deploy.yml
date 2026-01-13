@@ -33,7 +33,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: | 
             # Use sudo for permission
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/your-repo-name:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/Devops-starter:latest
             
             # Stop & Remove old container (ignore errors if it doesn't exist)
             sudo docker stop my-web-app || true
