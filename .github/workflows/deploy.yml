@@ -15,7 +15,7 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: BKY1601
+          username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and Push Docker Image
@@ -23,7 +23,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: BKY1601/devops-starter:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/devops-starter:latest
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
@@ -34,5 +34,5 @@ jobs:
           script: |
             docker stop my-web-app || true
             docker rm my-web-app || true
-            docker pull BKY1601/devops-starter:latest
-            docker run -d --name my-web-app -p 80:80 BKY1601/devops-starter:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/devops-starter:latest
+            docker run -d --name my-web-app -p 80:80 ${{ secrets.DOCKER_USERNAME }}/devops-starter:latest
