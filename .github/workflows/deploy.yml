@@ -40,4 +40,4 @@ jobs:
             sudo docker rm my-web-app || true
             
             # Run new container with sudo
-            sudo docker run -d --name my-web-app -p 80:80 ${{ secrets.DOCKER_USERNAME }}/your-repo-name:latest
+            sudo docker run -d --name my-web-app -p 80:80 ${{ secrets.DOCKER_USERNAME }}/Devops-starter:latest
